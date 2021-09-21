@@ -23,6 +23,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
@@ -35,13 +36,17 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
         
-      - name: Run linter 👀
-        run: npm run test
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run serve
 
   deploy:
     needs: [build,test]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Install dependencies 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
