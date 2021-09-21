@@ -25,7 +25,6 @@ context('Viewport', () => {
     // We added a cy.wait() between each viewport change so you can see
     // the change otherwise it is a little too fast to see :)
 
-
     cy.viewport('macbook-15')
     cy.wait(200)
     cy.viewport('macbook-13')
