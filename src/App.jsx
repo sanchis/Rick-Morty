@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Router } from 'wouter'
 import { CharactersContextProvider } from './context/CharactersContext'
-import Character from './pages/character'
+import Character from './pages/Character'
 import List from './pages/List'
 
 export default function App () {
