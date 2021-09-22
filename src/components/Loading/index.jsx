@@ -11,7 +11,7 @@ export default function Loading ({ children, show }) {
           height: ref?.current?.clientHeight ?? 0
         }}
       >
-        <img src='assets/loading.png' className={styles.loadingImage} />
+        <img src='img/loading.png' className={styles.loadingImage} />
       </div>
       <div ref={ref} style={{ zIndex: '-1000' }}>
         {children}

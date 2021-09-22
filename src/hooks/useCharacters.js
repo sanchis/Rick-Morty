@@ -10,10 +10,6 @@ export function useCharacters () {
     setCharactersRequestInfo
   } = useContext(CharactersContext)
 
-  useEffect(() => {
-    getCharactersPromise()
-  }, [])
-
   function getCharactersPromise (url, name) {
     setLoading(true)
     getCharactersList(url, name)
