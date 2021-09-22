@@ -38,12 +38,22 @@ export function useCharacters () {
       .finally(() => setLoading(false))
   }
 
+  function findCharacter(name){
+    getCharactersList(null,name)
+      .then(response => {
+        setCharactersRequestInfo(response.info)
+        setCharacters(response.results)
+      })
+      .finally(() => setLoading(false))
+  }
+
   return {
     characters,
     loading,
     moveNext,
     movePrev,
     canMoveNext: charactersRequestInfo.next !== null,
-    canMovePrev: charactersRequestInfo.prev !== null
+    canMovePrev: charactersRequestInfo.prev !== null,
+    findCharacter
   }
 }
