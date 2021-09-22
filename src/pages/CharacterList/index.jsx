@@ -2,21 +2,22 @@
 import React from 'react'
 import { useCharacters } from '../../hooks/useCharacters'
 import Filter from './components/Filter'
-import ListItem from './components/ListItem'
+import CharacterItem from './components/CharacterItem'
+import styles from './styles.module.css'
+import Paginator from './components/Paginator'
 
 export default function List () {
-  const { characters, moveNext, movePrev } = useCharacters()
+  const { characters } = useCharacters()
 
   return (
     <>
       <Filter />
-      <ul>
+      <div className={styles.listCharacter}>
         {characters.map(character =>
-          <ListItem key={character.id} character={character} />
+          <CharacterItem key={character.id} character={character} />
         )}
-      </ul>
-      <button onClick={movePrev}>Prev</button>
-      <button onClick={moveNext}>Next</button>
+      </div>
+      <Paginator />
     </>
   )
 }

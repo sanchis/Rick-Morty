@@ -45,8 +45,8 @@ export function useCharacters () {
     loading,
     moveNext,
     movePrev,
-    canMoveNext: charactersRequestInfo?.next !== null,
-    canMovePrev: charactersRequestInfo?.prev !== null,
+    canMoveNext: charactersRequestInfo?.next !== null && !loading,
+    canMovePrev: charactersRequestInfo?.prev !== null && !loading,
     findCharacter
   }
 }
