@@ -11,40 +11,33 @@ export function useCharacters () {
   } = useContext(CharactersContext)
 
   useEffect(() => {
-    setLoading(true)
-    getCharactersList()
-      .then(response => {
-        setCharactersRequestInfo(response.info)
-        setCharacters(response.results)
-      })
-      .finally(() => setLoading(false))
+    getCharactersPromise()
   }, [])
 
-  function moveNext () {
-    getCharactersList(charactersRequestInfo.next)
+  function getCharactersPromise (url, name) {
+    setLoading(true)
+    getCharactersList(url, name)
       .then(response => {
         setCharactersRequestInfo(response.info)
         setCharacters(response.results)
       })
+      .catch(() => {
+        setCharactersRequestInfo(null)
+        setCharacters([])
+      })
       .finally(() => setLoading(false))
+  }
+
+  function moveNext () {
+    getCharactersPromise(charactersRequestInfo.next)
   }
 
   function movePrev () {
-    getCharactersList(charactersRequestInfo.prev)
-      .then(response => {
-        setCharactersRequestInfo(response.info)
-        setCharacters(response.results)
-      })
-      .finally(() => setLoading(false))
+    getCharactersPromise(charactersRequestInfo.prev)
   }
 
-  function findCharacter(name){
-    getCharactersList(null,name)
-      .then(response => {
-        setCharactersRequestInfo(response.info)
-        setCharacters(response.results)
-      })
-      .finally(() => setLoading(false))
+  function findCharacter (name) {
+    getCharactersPromise(null, name)
   }
 
   return {
@@ -52,8 +45,8 @@ export function useCharacters () {
     loading,
     moveNext,
     movePrev,
-    canMoveNext: charactersRequestInfo.next !== null,
-    canMovePrev: charactersRequestInfo.prev !== null,
+    canMoveNext: charactersRequestInfo?.next !== null,
+    canMovePrev: charactersRequestInfo?.prev !== null,
     findCharacter
   }
 }
