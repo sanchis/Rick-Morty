@@ -7,7 +7,7 @@ export default function CharacterItem ({ character }) {
     <>
       <div>
         <Link href={`/character/${character.id}`} className={styles.characterItem}>
-          {/* <img src={character.image} alt={character.name} loading='lazy' /> */}
+          <img src={character.image} alt={character.name} loading='lazy' />
           <div className={styles.characterInfo}>
             <h2>{character.name}</h2>
             <span className='subTitle'>{character.status} - {character.species}</span>
