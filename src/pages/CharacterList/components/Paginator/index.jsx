@@ -1,10 +1,10 @@
 import React from 'react'
 import Button from '../../../../components/Button'
-import { useCharacters } from '../../../../hooks/useCharacters'
+import { useCharactersFilter } from '../../hooks/useCharacterFilter'
 import styles from './styles.module.css'
 
 export default function Paginator () {
-  const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharacters()
+  const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharactersFilter()
 
   return (
     <div className={styles.paginatorContainer}>

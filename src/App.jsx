@@ -9,7 +9,7 @@ export default function App () {
     <CharactersContextProvider>
       <div className='container'>
         <header>
-          <img src='img/logo.png' />
+          <img src='/img/logo.png' />
         </header>
         <Router base='/Rick-Morty'>
           <Route path='/' component={CharacterList} />
