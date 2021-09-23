@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 export default function Filter () {
   const [filter, setFilter] = useState('')
-  const { findCharacters, loading } = useCharacters()
+  const { findCharacters } = useCharacters()
 
   useEffect(() => {
     debounceFilter(filter)
@@ -19,8 +19,6 @@ export default function Filter () {
 
   return (
     <div className={styles.containerFilter}>
-      {JSON.stringify(loading)}
-
       <input
         placeholder='Search name'
         type='text'
