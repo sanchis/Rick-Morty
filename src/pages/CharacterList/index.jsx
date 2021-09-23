@@ -8,7 +8,10 @@ import Paginator from './components/Paginator'
 import Loading from '../../components/Loading'
 
 export default function List () {
-  const { characters, loading } = useCharacters()
+  const {
+    characters,
+    loading
+  } = useCharacters()
 
   return (
     <>

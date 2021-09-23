@@ -1,49 +1,37 @@
-import { useContext } from 'react'
+import debounce from 'just-debounce-it'
+import { useCallback, useContext } from 'react'
 import { CharactersContext } from '../context/CharactersContext'
-import { getCharactersList } from '../services/rick-morty'
 
 export function useCharacters () {
   const {
-    characters, setCharacters,
+    characters, filter,
+    setFilter,
     charactersRequestInfo,
-    setCharactersRequestInfo,
     loading,
-    setLoading
+    setCurrentPage
   } = useContext(CharactersContext)
 
-  function getCharactersPromise (url, name) {
-    setLoading(true)
-    getCharactersList(url, name)
-      .then(response => {
-        setCharactersRequestInfo(response.info)
-        setCharacters(response.results)
-      })
-      .catch(() => {
-        setCharactersRequestInfo(null)
-        setCharacters([])
-      })
-      .finally(() => setLoading(false))
-  }
-
   function moveNext () {
-    getCharactersPromise(charactersRequestInfo.next)
+    setCurrentPage((page) => page + 1)
   }
 
   function movePrev () {
-    getCharactersPromise(charactersRequestInfo.prev)
+    setCurrentPage((page) => page - 1)
   }
 
-  function findCharacters (name) {
-    getCharactersPromise(null, name)
-  }
+  const findCharacters = useCallback(
+    debounce((val) => setFilter(val), 300),
+    []
+  )
 
   return {
     characters,
     loading,
     moveNext,
     movePrev,
-    canMoveNext: charactersRequestInfo?.next !== null && !loading,
-    canMovePrev: charactersRequestInfo?.prev !== null && !loading,
-    findCharacters
+    canMoveNext: charactersRequestInfo?.next && !loading,
+    canMovePrev: charactersRequestInfo?.prev && !loading,
+    findCharacters,
+    filter
   }
 }
