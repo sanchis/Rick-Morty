@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCharacter } from '../../hooks/useCharacter'
+import { useCharacter } from './hooks/useCharacter'
 
 export default function Character ({ id }) {
   const { character } = useCharacter(id)

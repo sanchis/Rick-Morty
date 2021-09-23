@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
-import { CharactersContext } from '../context/CharactersContext'
-import { getCharacter } from '../services/rick-morty'
+import { CharactersContext } from '../../../context/CharactersContext'
+import { getCharacter } from '../../../services/rick-morty'
 
 export function useCharacter (id) {
   const [loading, setLoading] = useState(false)
