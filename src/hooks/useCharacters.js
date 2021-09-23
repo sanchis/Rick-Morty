@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { CharactersContext } from '../context/CharactersContext'
 import { getCharactersList } from '../services/rick-morty'
 
 export function useCharacters () {
-  const [loading, setLoading] = useState(false)
   const {
     characters, setCharacters,
     charactersRequestInfo,
-    setCharactersRequestInfo
+    setCharactersRequestInfo,
+    loading,
+    setLoading
   } = useContext(CharactersContext)
 
   function getCharactersPromise (url, name) {
@@ -32,7 +33,7 @@ export function useCharacters () {
     getCharactersPromise(charactersRequestInfo.prev)
   }
 
-  function findCharacter (name) {
+  function findCharacters (name) {
     getCharactersPromise(null, name)
   }
 
@@ -43,6 +44,6 @@ export function useCharacters () {
     movePrev,
     canMoveNext: charactersRequestInfo?.next !== null && !loading,
     canMovePrev: charactersRequestInfo?.prev !== null && !loading,
-    findCharacter
+    findCharacters
   }
 }

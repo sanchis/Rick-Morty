@@ -1,16 +1,5 @@
-.loadingIndicator {
-  width: 100%;
-  z-index: 10000;
-  position: absolute;
-
-  backdrop-filter: blur(15px);
-  border-radius: var(--b-radius);
-  transition: backdrop-filter 0.5s ease-in;
-}
-
 .loadingImage {
-  animation: _rotating_q5vsc_1 2s linear infinite;
-  max-width: 200px;
+  max-width: 300px;
   margin: auto;
   display: block;
   position: relative;
@@ -18,16 +7,8 @@
 }
 
 .loadingContainer {
-  position: relative;
-}
-
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  backdrop-filter: blur(6px);
+  background-color: #ffffffbf;
+  padding: 50px 20px;
+  border-radius: var(--b-radius);
 }

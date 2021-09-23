@@ -4,14 +4,17 @@ export const CharactersContext = React.createContext({})
 
 export function CharactersContextProvider ({ children }) {
   const [characters, setCharacters] = useState([])
-  const [charactersRequestInfo, setCharactersRequestInfo] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [charactersRequestInfo, setCharactersRequestInfo] = useState()
 
   return (
     <CharactersContext.Provider value={{
       characters,
       setCharacters,
       charactersRequestInfo,
-      setCharactersRequestInfo
+      setCharactersRequestInfo,
+      loading,
+      setLoading
     }}
     >
       {children}

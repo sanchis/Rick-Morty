@@ -5,26 +5,27 @@ import Paginator from '../Paginator'
 import styles from './styles.module.css'
 
 export default function Filter () {
-  const { findCharacter } = useCharacters()
   const [filter, setFilter] = useState('')
+  const { findCharacters, loading } = useCharacters()
 
   useEffect(() => {
     debounceFilter(filter)
   }, [filter])
 
   const debounceFilter = useCallback(
-    debounce((val) => findCharacter(val), 300),
+    debounce((val) => findCharacters(val), 300),
     []
   )
 
   return (
     <div className={styles.containerFilter}>
+      {JSON.stringify(loading)}
 
       <input
         placeholder='Search name'
         type='text'
-        className={styles.input}
         value={filter}
+        className={styles.input}
         onChange={(event) => setFilter(event.target.value)}
       />
       <Paginator />
