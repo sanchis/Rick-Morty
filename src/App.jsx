@@ -6,8 +6,6 @@ import CharacterList from './pages/CharacterList'
 import { ChakraProvider, Container, Image } from '@chakra-ui/react'
 import theme from './themes'
 
-import './styles/index.css'
-
 export default function App () {
   return (
     <ChakraProvider theme={theme}>
