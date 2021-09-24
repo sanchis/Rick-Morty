@@ -7,7 +7,7 @@ export default {
       wordWrap: 'break-word'
     },
     body: {
-      bg: mode('white url("/img/bg.jpg") repeat fixed center', 'white url("/img/bg-dark.jpg") repeat fixed center;')(props)
+      bg: mode('white url("img/bg.jpg") repeat fixed center', 'white url("img/bg-dark.jpg") repeat fixed center;')(props)
     }
 
   })
