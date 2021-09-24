@@ -1,6 +1,8 @@
 # Rick & Morty
  Devaway’s technical test
-
+<p align="center">
+<img src="https://raw.githubusercontent.com/sanchis/Rick-Morty/main/public/img/logo.png" height="auto" center width="500px">
+</p>
 
 Specifically, they want a website made of two type of pages:
 - On one hand, a main page where they can see a list of all the characters with general information about them.
