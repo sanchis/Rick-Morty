@@ -3,7 +3,7 @@ import { useCharacters } from '@/hooks/useCharacters'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
 export default function Paginator () {
-  const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharacters()
+  const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharactersFilter()
 
   return (
     <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
