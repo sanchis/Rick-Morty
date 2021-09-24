@@ -12,11 +12,15 @@ export function useCharacters () {
   } = useContext(CharactersContext)
 
   function moveNext () {
-    setCurrentPage((page) => page + 1)
+    if (canMoveNext()) {
+      setCurrentPage((page) => page + 1)
+    }
   }
 
   function movePrev () {
-    setCurrentPage((page) => page - 1)
+    if (canMovePrev()) {
+      setCurrentPage((page) => page - 1)
+    }
   }
 
   const findCharacters = useCallback(
@@ -24,13 +28,21 @@ export function useCharacters () {
     []
   )
 
+  function canMoveNext () {
+    return charactersRequestInfo?.next && !loading
+  }
+
+  function canMovePrev () {
+    return charactersRequestInfo?.prev && !loading
+  }
+
   return {
     characters,
     loading,
     moveNext,
     movePrev,
-    canMoveNext: charactersRequestInfo?.next && !loading,
-    canMovePrev: charactersRequestInfo?.prev && !loading,
+    canMoveNext,
+    canMovePrev,
     findCharacters,
     filter
   }
