@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { CharactersContext } from '../../../context/CharactersContext'
+import { CharactersContext } from '@/context/CharactersContext'
 import { getCharacter } from '../services'
 
 export function useCharacter (id) {

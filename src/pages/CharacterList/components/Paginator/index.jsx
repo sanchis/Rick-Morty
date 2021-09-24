@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCharacters } from '../../../../hooks/useCharacters'
+import { useCharacters } from '@/hooks/useCharacters'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
 export default function Paginator () {

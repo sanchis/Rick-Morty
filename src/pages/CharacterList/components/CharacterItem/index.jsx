@@ -2,7 +2,7 @@ import { Image } from '@chakra-ui/image'
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
 import React, { useState } from 'react'
 import { SkeletonCircle, Tooltip } from '@chakra-ui/react'
-import { Card } from '../../../../components/Card'
+import { Card } from '@/components/Card'
 import { Link } from 'wouter'
 
 export default function CharacterItem ({ character }) {

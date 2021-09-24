@@ -1,6 +1,6 @@
 import debounce from 'just-debounce-it'
 import { useCallback, useContext } from 'react'
-import { CharactersContext } from '../context/CharactersContext'
+import { CharactersContext } from '@/context/CharactersContext'
 
 export function useCharacters () {
   const {

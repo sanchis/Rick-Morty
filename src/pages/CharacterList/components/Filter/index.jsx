@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useCharacters } from '../../../../hooks/useCharacters'
+import { useCharacters } from '@/hooks/useCharacters'
 import Paginator from '../Paginator'
 import { Input } from '@chakra-ui/react'
-import { Card } from '../../../../components/Card'
+import { Card } from '@/components/Card'
 import { Flex } from '@chakra-ui/layout'
 
 export default function Filter () {
@@ -26,5 +26,3 @@ export default function Filter () {
 
   )
 }
-
-// TODO create alias to improve legivility of imports

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getCharactersList } from '../services/rick-morty'
+import { getCharactersList } from '@/services/rick-morty'
 
 export const CharactersContext = React.createContext({})
 
