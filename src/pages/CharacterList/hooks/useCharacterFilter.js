@@ -18,7 +18,7 @@ export function useCharactersFilter () {
     setPage((page) => requestInfo.prev ? page - 1 : page)
   }
 
-  const findByNameDebounce = useCallback(debounce((name) => setFilter(name),500),[])
+  const findByNameDebounce = useCallback(debounce((name) => setFilter(name), 500), [])
 
   return {
     canMoveNext: requestInfo?.next,
