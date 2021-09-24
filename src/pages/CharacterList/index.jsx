@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { useCharacters } from '@/hooks/useCharacters'
+import { useCharacters } from './hooks/useCharacters'
 import Filter from './components/Filter'
 import CharacterItem from './components/CharacterItem'
 import Paginator from './components/Paginator'
