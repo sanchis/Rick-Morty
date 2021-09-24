@@ -1,10 +1,11 @@
 import debounce from 'just-debounce-it'
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 import { CharactersContext } from '../../../context/CharactersContext'
 
 export function useCharactersFilter () {
   const {
     requestInfo,
+    filter,
     setPage,
     setFilter
   } = useContext(CharactersContext)
@@ -17,13 +18,14 @@ export function useCharactersFilter () {
     setPage((page) => requestInfo.prev ? page - 1 : page)
   }
 
-  const findByNameDebounce = debounce((name) => setFilter(name))
+  const findByNameDebounce = useCallback(debounce((name) => setFilter(name), 500), [])
 
   return {
     canMoveNext: requestInfo?.next,
     canMovePrev: requestInfo?.prev,
     moveNext,
     movePrev,
+    filter,
     findByName: findByNameDebounce
   }
 }

@@ -3,27 +3,26 @@ import React from 'react'
 import { useCharacters } from './hooks/useCharacters'
 import Filter from './components/Filter'
 import CharacterItem from './components/CharacterItem'
-import styles from './styles.module.css'
 import Paginator from './components/Paginator'
-import Loading from '../../components/Loading'
+import { Grid } from '@chakra-ui/layout'
+import { Card } from '@/components/Card'
 
 export default function List () {
   const {
-    characters,
-    loading
+    characters
   } = useCharacters()
 
   return (
     <>
       <Filter />
-      <Loading show={loading}>
-        <div className={styles.listCharacter}>
-          {characters.map(character =>
-            <CharacterItem key={character.id} character={character} />
-          )}
-        </div>
+      <Grid templateColumns='repeat(auto-fill, minmax(346px, 1fr))' gap={6} alignItems='center'>
+        {characters.map(character =>
+          <CharacterItem key={character.id} character={character} />
+        )}
+      </Grid>
+      <Card w='100%' p='2' my='2' display='flex' justifyContent='center'>
         <Paginator />
-      </Loading>
+      </Card>
     </>
   )
 }
