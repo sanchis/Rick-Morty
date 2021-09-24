@@ -1,15 +1,16 @@
 import React from 'react'
-import Button from '../../../../components/Button'
 import { useCharacters } from '../../../../hooks/useCharacters'
-import styles from './styles.module.css'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 export default function Paginator () {
   const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharacters()
 
   return (
-    <div className={styles.paginatorContainer}>
-      <Button className={styles.paginatorButtons} onClick={movePrev} disabled={!canMovePrev}>Prev</Button>
-      <Button className={styles.paginatorButtons} onClick={moveNext} disabled={!canMoveNext}>Next</Button>
-    </div>
+    <>
+      <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
+        <Button onClick={movePrev} disabled={!canMovePrev}>Prev</Button>
+        <Button onClick={moveNext} disabled={!canMoveNext}>Next</Button>
+      </ButtonGroup>
+    </>
   )
 }
