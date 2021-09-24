@@ -15,7 +15,7 @@ export default function CharacterItem ({ character }) {
           <Flex direction={['row', 'row', 'column', 'column', 'column']}>
             <SkeletonCircle alignSelf='center' size={['100', '100', '300']} hidden={imageLoaded} />
             <Image
-              src={character.image} maxW={['20%', '30%', '100%']} maxH='300px'
+              src={character.image} maxW={['30%', '30%', '100%']} maxH='300px'
               objectFit='cover' objectPosition='top' alt={character.name} hidden={!imageLoaded}
               onLoad={() => setImageLoaded(true)}
             />
