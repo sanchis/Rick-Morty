@@ -6,11 +6,9 @@ export default function Paginator () {
   const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharacters()
 
   return (
-    <>
-      <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
-        <Button onClick={movePrev} disabled={!canMovePrev}>Prev</Button>
-        <Button onClick={moveNext} disabled={!canMoveNext}>Next</Button>
-      </ButtonGroup>
-    </>
+    <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
+      <Button onClick={movePrev} disabled={!canMovePrev}>Prev</Button>
+      <Button onClick={moveNext} disabled={!canMoveNext}>Next</Button>
+    </ButtonGroup>
   )
 }

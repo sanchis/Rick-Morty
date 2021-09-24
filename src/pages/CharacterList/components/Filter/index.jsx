@@ -8,7 +8,6 @@ import { Flex } from '@chakra-ui/layout'
 export default function Filter () {
   const { findCharacters, filter } = useCharacters()
   const [filterValue, setFilterValue] = useState(filter)
-  console.log('me cambio')
 
   return (
     <Card boxShadow='md' my='2'>
@@ -23,6 +22,5 @@ export default function Filter () {
         <Paginator />
       </Flex>
     </Card>
-
   )
 }
