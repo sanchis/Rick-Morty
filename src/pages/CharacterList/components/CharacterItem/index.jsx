@@ -20,7 +20,7 @@ export default function CharacterItem ({ character }) {
               onLoad={() => setImageLoaded(true)}
             />
 
-            <Box p='2'>
+            <Box p='2' overflow='hidden'>
               <Tooltip label={character.name}>
                 <Heading as='h2' size='lg' isTruncated>{character.name}</Heading>
               </Tooltip>
