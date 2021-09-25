@@ -30,15 +30,15 @@ export default function CharacterItem ({ character }) {
               <Tooltip label={character.name}>
                 <Heading as='h2' size='lg' isTruncated>{character.name}</Heading>
               </Tooltip>
-              <Text color='gray.500' isTruncated>{character.status} - {character.species}</Text>
+              <Text variant='subTitle' isTruncated>{character.status} - {character.species}</Text>
               <Tooltip label={character.location.name}>
                 <Text isTruncated>
-                  <Text as='span' fontWeight='bold' color='secondary.500'>Location: </Text>{character.location.name}
+                  <Text as='span' variant='hightLight'>Location: </Text>{character.location.name}
                 </Text>
               </Tooltip>
               <Tooltip label={character.origin.name}>
                 <Text isTruncated>
-                  <Text as='span' fontWeight='bold' color='secondary.500'>Origin: </Text>{character.origin.name}
+                  <Text as='span' variant='hightLight'>Origin: </Text>{character.origin.name}
                 </Text>
               </Tooltip>
             </Box>
