@@ -27,7 +27,7 @@ export default function CharacterItem ({ character }) {
               <Text color='gray.500' isTruncated>{character.status} - {character.species}</Text>
               <Tooltip label={character.location.name}>
                 <Text isTruncated>
-                  <Text as='span' fontWeight='bold' color='secondary.500'>Localtion: </Text>{character.location.name}
+                  <Text as='span' fontWeight='bold' color='secondary.500'>Location: </Text>{character.location.name}
                 </Text>
               </Tooltip>
               <Tooltip label={character.origin.name}>
