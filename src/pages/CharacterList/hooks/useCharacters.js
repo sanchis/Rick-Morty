@@ -8,10 +8,12 @@ export function useCharacters () {
     filter,
     characters,
     setCharacters,
-    setRequestInfo
+    setRequestInfo,
+    setLoading
   } = useContext(CharactersContext)
 
   useEffect(() => {
+    setLoading(true)
     getCharactersList(filter, page)
       .then(data => {
         setCharacters(data.results)
@@ -19,7 +21,7 @@ export function useCharacters () {
       }).catch(() => {
         setCharacters([])
         setRequestInfo()
-      })
+      }).finally(() => setLoading(false))
   }, [page, filter])
 
   return {

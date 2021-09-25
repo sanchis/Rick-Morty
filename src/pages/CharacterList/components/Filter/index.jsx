@@ -14,7 +14,9 @@ export default function Filter () {
   }, [filterValue])
 
   return (
-    <Card boxShadow='md' my='2'>
+    <Card
+      boxShadow='xl' my='2'
+    >
       <Flex m='3' direction='row'>
         <Input
           placeholder='Search by name' type='text'

@@ -11,7 +11,13 @@ export default function CharacterItem ({ character }) {
   return (
     <>
       <Link href={`/character/${character.id}`}>
-        <Card cursor='pointer'>
+        <Card
+          cursor='pointer' _hover={{
+            transform: 'scale(1.1)'
+          }}
+          boxShadow='xl'
+          transition='0.1s ease-in-out'
+        >
           <Flex direction={['row', 'row', 'column', 'column', 'column']}>
             <SkeletonCircle alignSelf='center' size={['100', '100', '300']} hidden={imageLoaded} />
             <Image

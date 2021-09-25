@@ -7,8 +7,8 @@ export default function Paginator () {
 
   return (
     <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
-      <Button onClick={movePrev} disabled={!canMovePrev}>Prev</Button>
-      <Button onClick={moveNext} disabled={!canMoveNext}>Next</Button>
+      <Button onClick={movePrev} disabled={!canMovePrev()}>Prev</Button>
+      <Button onClick={moveNext} disabled={!canMoveNext()}>Next</Button>
     </ButtonGroup>
   )
 }

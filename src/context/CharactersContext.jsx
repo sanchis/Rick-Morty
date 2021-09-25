@@ -4,6 +4,7 @@ export const CharactersContext = React.createContext({})
 export function CharactersContextProvider ({ children }) {
   const [characters, setCharacters] = useState([])
   const [requestInfo, setRequestInfo] = useState()
+  const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
   const [filter, setFilter] = useState('')
   return (
@@ -15,7 +16,9 @@ export function CharactersContextProvider ({ children }) {
       characters,
       setCharacters,
       requestInfo,
-      setRequestInfo
+      setRequestInfo,
+      loading,
+      setLoading
     }}
     >
       {children}

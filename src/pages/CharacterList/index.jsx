@@ -20,7 +20,10 @@ export default function List () {
           <CharacterItem key={character.id} character={character} />
         )}
       </Grid>
-      <Card w='100%' p='2' my='2' display='flex' justifyContent='center'>
+      <Card
+        w='100%' p='2' my='2' display='flex' boxShadow='xl'
+        justifyContent='center'
+      >
         <Paginator />
       </Card>
     </>

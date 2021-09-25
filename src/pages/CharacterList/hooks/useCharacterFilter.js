@@ -7,22 +7,35 @@ export function useCharactersFilter () {
     requestInfo,
     filter,
     setPage,
-    setFilter
+    setFilter,
+    loading
   } = useContext(CharactersContext)
 
   function moveNext () {
-    setPage((page) => requestInfo.next ? page + 1 : page)
+    if (canMoveNext()) {
+      setPage((page) => requestInfo.next ? page + 1 : page)
+    }
   }
 
   function movePrev () {
-    setPage((page) => requestInfo.prev ? page - 1 : page)
+    if (canMovePrev()) {
+      setPage((page) => requestInfo.prev ? page - 1 : page)
+    }
   }
 
   const findByNameDebounce = useCallback(debounce((name) => setFilter(name), 500), [])
 
+  function canMoveNext () {
+    return requestInfo?.next && !loading
+  }
+
+  function canMovePrev () {
+    return requestInfo?.prev && !loading
+  }
+
   return {
-    canMoveNext: requestInfo?.next,
-    canMovePrev: requestInfo?.prev,
+    canMoveNext,
+    canMovePrev,
     moveNext,
     movePrev,
     filter,
