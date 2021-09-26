@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Router } from 'wouter'
+import { Route, Router, Switch } from 'wouter'
 import { CharactersContextProvider } from './context/CharactersContext'
 import Character from './pages/Character'
 import CharacterList from './pages/CharacterList'
@@ -7,6 +7,7 @@ import { ChakraProvider, Container, Image } from '@chakra-ui/react'
 import theme from './themes'
 import logo from '@/../assets/logo.png'
 import { useHashLocation } from './hooks/useHashLocation'
+import Error from './pages/Error'
 
 export default function App () {
   return (
@@ -17,10 +18,18 @@ export default function App () {
             <Image margin='auto' src={logo} />
           </header>
           <Router base='/Rick-Morty' hook={useHashLocation}>
-            <Route path='/' exact component={CharacterList} />
-            <Route path='/character/:id'>
-              {params => <Character id={params.id} />}
-            </Route>
+            <Switch>
+              <Route path='/' component={CharacterList} />
+              <Route path='/character/:id'>
+                {params => <Character id={params.id} />}
+              </Route>
+              <Route path='/error/:code'>
+                {(params) => <Error code={params.code} />}
+              </Route>
+              <Route>
+                {() => <Error code='404' />}
+              </Route>
+            </Switch>
           </Router>
         </Container>
       </CharactersContextProvider>

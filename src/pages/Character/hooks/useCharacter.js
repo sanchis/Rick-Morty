@@ -16,14 +16,14 @@ export function useCharacter (id) {
 
     const characterInState = characters.find(char => char.id === Number(id))
     if (characterInState) {
+      setLoading(false)
       setCharacter(characterInState)
     } else {
       setLoading(true)
       getCharacter(id)
         .then(setCharacter)
+        .catch(() => setLocation('/error/404'))
         .finally(() => setLoading(false))
-
-      // TODO create page 404 if not found character
     }
   }, [id])
 
