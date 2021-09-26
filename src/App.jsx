@@ -16,7 +16,7 @@ export default function App () {
             <Image margin='auto' src={logo} />
           </header>
           <Router base='/Rick-Morty'>
-            <Route path='/' component={CharacterList} />
+            <Route path='/' exact component={CharacterList} />
             <Route path='/character/:id'>
               {(params) => <Character id={params.id} />}
             </Route>
