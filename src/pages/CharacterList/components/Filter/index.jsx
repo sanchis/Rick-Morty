@@ -17,8 +17,9 @@ export default function Filter () {
     <Card boxShadow='xl' my='2' p='2'>
       <Flex direction='row'>
         <Input
-          placeholder='Search by name' type='text'
-          onChange={(event) => setFilterValue(event.target.value)}
+          placeholder='Search by name'
+          type='text'
+          onChange={event => setFilterValue(event.target.value)}
           value={filterValue}
         />
         <Paginator />

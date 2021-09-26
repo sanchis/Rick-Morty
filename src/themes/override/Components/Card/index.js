@@ -1,7 +1,6 @@
-
 import { mode } from '@chakra-ui/theme-tools'
 export default {
-  baseStyle: (props) => ({
+  baseStyle: props => ({
     borderWidth: '5px',
     borderColor: 'primary.600',
     borderRadius: 'lg',

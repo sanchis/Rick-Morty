@@ -1,10 +1,13 @@
 # Rick & Morty
- Devaway’s technical test
+
+Devaway’s technical test
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/sanchis/Rick-Morty/main/assets/logo.png" height="auto" center width="500px">
 </p>
 
 Specifically, they want a website made of two type of pages:
+
 - On one hand, a main page where they can see a list of all the characters with general information about them.
 - On the other hand, an individual page where they can see in detail the information of each character, so they can have access to all their data. This page should be able to be shared with a unique link.
 

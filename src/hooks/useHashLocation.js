@@ -7,7 +7,7 @@ const currentLocation = () => {
   return window.location.hash.replace(/^#/, '') || '/'
 }
 
-const navigate = (to) => (window.location.hash = to)
+const navigate = to => (window.location.hash = to)
 
 export const useHashLocation = () => {
   const [loc, setLoc] = useState(currentLocation())

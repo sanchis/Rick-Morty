@@ -7,9 +7,7 @@ export function useCharacter (id) {
   const [loading, setLoading] = useState(false)
   const [character, setCharacter] = useState()
   const [, setLocation] = useLocation()
-  const {
-    characters
-  } = useContext(CharactersContext)
+  const { characters } = useContext(CharactersContext)
 
   useEffect(() => {
     if (!id) {

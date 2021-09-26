@@ -4,6 +4,7 @@ import colors from './override/Colors'
 import components from './override/Components'
 import config from './override/Config'
 
-export default extendTheme({ styles, colors, config, components },
+export default extendTheme(
+  { styles, colors, config, components },
   withDefaultColorScheme({ colorScheme: 'primary' })
 )

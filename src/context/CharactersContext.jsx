@@ -8,18 +8,19 @@ export function CharactersContextProvider ({ children }) {
   const [page, setPage] = useState(1)
   const [filter, setFilter] = useState('')
   return (
-    <CharactersContext.Provider value={{
-      filter,
-      setFilter,
-      page,
-      setPage,
-      characters,
-      setCharacters,
-      requestInfo,
-      setRequestInfo,
-      loading,
-      setLoading
-    }}
+    <CharactersContext.Provider
+      value={{
+        filter,
+        setFilter,
+        page,
+        setPage,
+        characters,
+        setCharacters,
+        requestInfo,
+        setRequestInfo,
+        loading,
+        setLoading
+      }}
     >
       {children}
     </CharactersContext.Provider>

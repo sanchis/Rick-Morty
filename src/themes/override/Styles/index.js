@@ -3,14 +3,16 @@ import bg from '@/../assets/bg.jpg'
 import bgDark from '@/../assets/bg-dark.jpg'
 
 export default {
-  global: (props) => ({
+  global: props => ({
     '*, *::before, &::after': {
       borderColor: 'primary.600',
       wordWrap: 'break-word'
     },
     body: {
-      bg: mode(`white url("${bg}") repeat fixed center`, `white url("${bgDark}") repeat fixed center;`)(props)
+      bg: mode(
+        `white url("${bg}") repeat fixed center`,
+        `white url("${bgDark}") repeat fixed center;`
+      )(props)
     }
-
   })
 }

@@ -18,10 +18,12 @@ export function useCharacters () {
       .then(data => {
         setCharacters(data.results)
         setRequestInfo(data.info)
-      }).catch(() => {
+      })
+      .catch(() => {
         setCharacters([])
         setRequestInfo()
-      }).finally(() => setLoading(false))
+      })
+      .finally(() => setLoading(false))
   }, [page, filter])
 
   return {

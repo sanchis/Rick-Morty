@@ -19,7 +19,7 @@ export default function App () {
           <Router base='/Rick-Morty' hook={useHashLocation}>
             <Route path='/' exact component={CharacterList} />
             <Route path='/character/:id'>
-              {(params) => <Character id={params.id} />}
+              {params => <Character id={params.id} />}
             </Route>
           </Router>
         </Container>

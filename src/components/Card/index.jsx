@@ -5,5 +5,9 @@ export default function Card (props) {
   const { variant, children, ...rest } = props
   const styles = useStyleConfig('Card', { variant })
 
-  return <Box __css={styles} {...rest}>{children}</Box>
+  return (
+    <Box __css={styles} {...rest}>
+      {children}
+    </Box>
+  )
 }
