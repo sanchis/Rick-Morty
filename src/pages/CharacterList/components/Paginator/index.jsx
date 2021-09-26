@@ -8,8 +8,20 @@ export default function Paginator () {
 
   return (
     <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
-      <Button leftIcon={<ArrowLeftIcon />} onClick={movePrev} disabled={!canMovePrev()}>Prev</Button>
-      <Button rightIcon={<ArrowRightIcon />} onClick={moveNext} disabled={!canMoveNext()}>Next</Button>
+      <Button
+        leftIcon={<ArrowLeftIcon />}
+        onClick={movePrev}
+        disabled={!canMovePrev()}
+      >
+        Prev
+      </Button>
+      <Button
+        rightIcon={<ArrowRightIcon />}
+        onClick={moveNext}
+        disabled={!canMoveNext()}
+      >
+        Next
+      </Button>
     </ButtonGroup>
   )
 }
