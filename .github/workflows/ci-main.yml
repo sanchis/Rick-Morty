@@ -41,7 +41,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           build: npm run build
-          start: npm run serve
+          start: npm run dev
 
   deploy:
     needs: [lint,test]
