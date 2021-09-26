@@ -1,4 +1,6 @@
 import { mode } from '@chakra-ui/theme-tools'
+import bg from '@/../assets/bg.jpg'
+import bgDark from '@/../assets/bg-dark.jpg'
 
 export default {
   global: (props) => ({
@@ -7,7 +9,7 @@ export default {
       wordWrap: 'break-word'
     },
     body: {
-      bg: mode('white url("img/bg.jpg") repeat fixed center', 'white url("img/bg-dark.jpg") repeat fixed center;')(props)
+      bg: mode(`white url("${bg}") repeat fixed center`, `white url("${bgDark}") repeat fixed center;`)(props)
     }
 
   })

@@ -5,6 +5,7 @@ import Character from './pages/Character'
 import CharacterList from './pages/CharacterList'
 import { ChakraProvider, Container, Image } from '@chakra-ui/react'
 import theme from './themes'
+import logo from '@/../assets/logo.png'
 
 export default function App () {
   return (
@@ -12,7 +13,7 @@ export default function App () {
       <CharactersContextProvider>
         <Container maxW='container.xl'>
           <header>
-            <Image margin='auto' src='/img/logo.png' />
+            <Image margin='auto' src={logo} />
           </header>
           <Router base='/Rick-Morty'>
             <Route path='/' component={CharacterList} />
