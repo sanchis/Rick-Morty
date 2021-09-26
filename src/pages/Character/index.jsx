@@ -4,6 +4,7 @@ import { useCharacter } from './hooks/useCharacter'
 import Card from '@/components/Card'
 import CharacterSummary from '@/components/CharacterSummary'
 import { useLocation } from 'wouter'
+import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
 export default function Character ({ id }) {
   const { character } = useCharacter(id)
@@ -13,10 +14,10 @@ export default function Character ({ id }) {
     <>
       <Card my='2' p='2'>
         <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
-          <Button my={['1', '1', '0']} onClick={() => setLocation('/')}>Back to the list</Button>
+          <Button leftIcon={<ArrowBackIcon />} my={['1', '1', '0']} onClick={() => setLocation('/')}>Back to the list</Button>
           <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
-            <Button my={['1', '1', '0']} mx='1'>Move prev character</Button>
-            <Button my={['1', '1', '0']} mx='1'>Move next character</Button>
+            <Button leftIcon={<ArrowLeftIcon />} my={['1', '1', '0']} mx='1'>Move prev character</Button>
+            <Button rightIcon={<ArrowRightIcon />} my={['1', '1', '0']} mx='1'>Move next character</Button>
           </Flex>
         </Flex>
       </Card>
