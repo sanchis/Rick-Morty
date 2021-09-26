@@ -16,6 +16,7 @@ export default function List () {
       <Filter />
       <Loading show={loading}>
         <Grid
+          className='container-list'
           templateColumns='repeat(auto-fill, minmax(346px, 1fr))'
           gap={6}
           alignItems='center'

@@ -29,22 +29,22 @@ jobs:
 
       - name: Run linter 👀
         run: npm run lint
-  # test:
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Install dependencies 👨🏻‍💻
-  #       run: npm ci --prefer-offline --no-audit
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies 👨🏻‍💻
+        run: npm ci --prefer-offline --no-audit
         
-  #     - name: Cypress run
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         build: npm run build
-  #         start: npm run serve
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm run serve
 
   deploy:
-    needs: [lint]
+    needs: [lint,test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

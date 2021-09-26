@@ -10,10 +10,6 @@ export function useCharacter (id) {
   const { characters } = useContext(CharactersContext)
 
   useEffect(() => {
-    if (!id) {
-      return
-    }
-
     const characterInState = characters.find(char => char.id === Number(id))
     if (characterInState) {
       setLoading(false)

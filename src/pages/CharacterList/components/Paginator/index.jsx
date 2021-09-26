@@ -9,6 +9,7 @@ export default function Paginator () {
   return (
     <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
       <Button
+        className='filter-move-prev'
         leftIcon={<ArrowLeftIcon />}
         onClick={movePrev}
         disabled={!canMovePrev()}
@@ -16,6 +17,7 @@ export default function Paginator () {
         Prev
       </Button>
       <Button
+        className='filter-move-next'
         rightIcon={<ArrowRightIcon />}
         onClick={moveNext}
         disabled={!canMoveNext()}

@@ -20,11 +20,12 @@ export default function Character ({ id }) {
     <>
       <Card my='2' p='2'>
         <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
-          <Button leftIcon={<ArrowBackIcon />} my={['1', '1', '0']} onClick={() => setLocation('/')}>
+          <Button className='navigate-back-character' leftIcon={<ArrowBackIcon />} my={['1', '1', '0']} onClick={() => setLocation('/')}>
             Back to the list
           </Button>
           <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
             <Button
+              className='navigate-prev-character'
               onClick={movePrevCharacter}
               disabled={loading}
               leftIcon={<ArrowLeftIcon />}
@@ -34,6 +35,7 @@ export default function Character ({ id }) {
               Move prev character
             </Button>
             <Button
+              className='navigate-next-character'
               onClick={moveNextCharacter}
               disabled={loading}
               rightIcon={<ArrowRightIcon />}
