@@ -4,7 +4,7 @@ import { getCharacter } from '../services'
 import { useLocation } from 'wouter'
 
 export function useCharacter (id) {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [character, setCharacter] = useState()
   const [, setLocation] = useLocation()
   const { characters } = useContext(CharactersContext)
@@ -22,6 +22,8 @@ export function useCharacter (id) {
       getCharacter(id)
         .then(setCharacter)
         .finally(() => setLoading(false))
+
+      // TODO create page 404 if not found character
     }
   }, [id])
 

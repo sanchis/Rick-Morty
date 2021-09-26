@@ -5,6 +5,7 @@ import Card from '@/components/Card'
 import CharacterSummary from '@/components/CharacterSummary'
 import { useLocation } from 'wouter'
 import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+import Loading from '../../components/Loading'
 
 export default function Character ({ id }) {
   const {
@@ -44,7 +45,9 @@ export default function Character ({ id }) {
           </Flex>
         </Flex>
       </Card>
-      {character ? (<CharacterSummary character={character} flexDirection='row' />) : null}
+      <Loading show={loading}>
+        <CharacterSummary character={character} flexDirection='row' />
+      </Loading>
     </>
   )
 }
