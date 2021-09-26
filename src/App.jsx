@@ -12,7 +12,7 @@ export default function App () {
       <CharactersContextProvider>
         <Container maxW='container.xl'>
           <header>
-            <Image margin='auto' src='img/logo.png' />
+            <Image margin='auto' src='/img/logo.png' />
           </header>
           <Router base='/Rick-Morty'>
             <Route path='/' component={CharacterList} />
