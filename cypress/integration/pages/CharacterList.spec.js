@@ -4,7 +4,7 @@ describe('Character List page', () => {
   })
 
   it('CharacterList page can be opened', () => {
-    cy.get('input[placeholder="Search by name"')
+    cy.contains('input[placeholder="Search by name"')
   })
 
   it('CharacterList page can be filter by name', () => {
@@ -13,10 +13,9 @@ describe('Character List page', () => {
   })
 
   it('CharacterList page can be paginated next', () => {
-    cy.waitFor(2000)
-    cy.intercept('api/character?*', { fixture: 'characters.json' }).as('getCharacters')
+    cy.intercept('/api/character?name=&page=*', { fixture: 'characters.json' }).as('getCharacters')
     cy.get('button.filter-move-next').first().click()
-    cy.wait(['@getCharacters']).then(intercept => {
+    cy.wait('@getCharacters').then(intercept => {
       expect(intercept.request.url).to.match(/\page=2/)
     })
   })
@@ -27,8 +26,9 @@ describe('Character List page', () => {
   })
 
   it('CharacterList page can be paginated prev', () => {
-    cy.get('button.filter-move-next').first().click()
     cy.intercept('api/character?*', { fixture: 'characters-prev.json' }).as('getCharacters')
+    cy.get('button.filter-move-next').first().click()
+    cy.wait(['@getCharacters'])
     cy.get('button.filter-move-prev').first().click()
     cy.wait(['@getCharacters']).then(intercept => {
       expect(intercept.request.url).to.match(/\page=1/)
@@ -42,6 +42,7 @@ describe('Character List page', () => {
 
   it('CharacterList page paginate next buttons can be disabled', () => {
     cy.intercept('api/character?*', { fixture: 'charactersListLimit.json' }).as('getCharacters')
+    cy.reload()
     cy.get('button.filter-move-next').first().should('be.disabled')
   })
 })

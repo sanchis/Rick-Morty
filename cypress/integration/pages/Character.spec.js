@@ -38,7 +38,7 @@ describe('Character page', () => {
     })
   })
 
-  it.only('Character page can navigate prev', () => {
+  it('Character page can navigate prev', () => {
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
     cy.visit('#/character/2')
     cy.wait(['@getCharacter'])
