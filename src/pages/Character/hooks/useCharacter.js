@@ -11,10 +11,13 @@ export function useCharacter (id) {
 
   useEffect(() => {
     const characterInState = characters.find(char => char.id === Number(id))
+
+    // Check if the current character exist in context to prevent make a new request.
     if (characterInState) {
       setLoading(false)
       setCharacter(characterInState)
     } else {
+      // if not exist in context make a new request to get the character
       setLoading(true)
       getCharacter(id)
         .then(setCharacter)
