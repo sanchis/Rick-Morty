@@ -18,6 +18,7 @@ export default function Filter () {
       <Flex direction='row'>
         <Input
           placeholder='Search by name'
+          data-cy='filter-by-name'
           type='text'
           onChange={event => setFilterValue(event.target.value)}
           value={filterValue}

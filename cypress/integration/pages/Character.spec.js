@@ -9,10 +9,10 @@ describe('Character page', () => {
 
   it('Character page loading indicator should be show', () => {
     cy.intercept('api/character/*', { fixture: 'character.json', delay: 3000 }).as('getCharacter')
-    cy.get('button.navigate-next-character').click()
-    cy.get('.loading-indicator').should('be.visible')
+    cy.get('button[data-cy="navigate-next-character"]').click()
+    cy.get('[data-cy="loading-indicator"]').should('be.visible')
     cy.wait(['@getCharacter'], { timeout: 10000 })
-    cy.get('.loading-indicator').should('not.exist')
+    cy.get('[data-cy="loading-indicator"]').should('not.exist')
   })
 
   it('Character page not found can be opened a error page', () => {
@@ -26,13 +26,13 @@ describe('Character page', () => {
   })
 
   it('Character page can navigate to list', () => {
-    cy.get('button.navigate-back-character').click()
-    cy.get('input[placeholder="Search by name"]').should('exist')
+    cy.get('button[data-cy="navigate-back-character"]').click()
+    cy.get('input[data-cy="filter-by-name"]').should('exist')
   })
 
   it('Character page can navigate next', () => {
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
-    cy.get('button.navigate-next-character').click()
+    cy.get('button[data-cy="navigate-next-character"]').click()
     cy.wait(['@getCharacter']).then(intercept => {
       expect(intercept.request.url).to.match(/\/character\/2/)
     })
@@ -42,7 +42,7 @@ describe('Character page', () => {
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
     cy.visit('#/character/2')
     cy.wait(['@getCharacter'])
-    cy.get('button.navigate-prev-character').click()
+    cy.get('button[data-cy="navigate-prev-character"]').click()
     cy.wait(['@getCharacter']).then(intercept => {
       expect(intercept.request.url).to.match(/\/character\/1/)
     })
@@ -50,7 +50,7 @@ describe('Character page', () => {
 
   it('Character page from character list get character obj', () => {
     cy.visit('#/')
-    cy.get('.container-list').children().first().click()
-    cy.get('.loading-indicator').should('not.exist')
+    cy.get('[data-cy="container-list"]').children().first().click()
+    cy.get('[data-cy="loading-indicator"]').should('not.exist')
   })
 })
