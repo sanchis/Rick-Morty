@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getCharactersList (name, page) {
   return axios
-    .get('https://rickandmortyapi.com/api/character', {
+    .get('character', {
       params: {
         name,
         page
