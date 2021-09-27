@@ -4,7 +4,7 @@ describe('Character List page', () => {
   })
 
   it('CharacterList page can be opened', () => {
-    cy.contains('input[placeholder="Search by name"')
+    cy.get('input[placeholder="Search by name"').should('exist')
   })
 
   it('CharacterList page can be filter by name', () => {
