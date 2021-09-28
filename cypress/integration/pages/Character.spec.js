@@ -42,7 +42,7 @@ describe('Character page', () => {
     cy.get('input[data-cy="filter-by-name"]').should('exist')
   })
 
-  it.only('Character page can navigate next', () => {
+  it('Character page can navigate next', () => {
     cy.reload()
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
     cy.get('button[data-cy="navigate-next-character"]').click()
