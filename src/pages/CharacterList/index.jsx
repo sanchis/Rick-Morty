@@ -43,7 +43,11 @@ export default function List () {
         boxShadow='xl'
         justifyContent='center'
       >
-        <Paginator />
+        <Paginator onPaginate={() => window.scroll({
+          behavior: 'smooth',
+          top: 0
+        })}
+        />
       </Card>
     </>
   )

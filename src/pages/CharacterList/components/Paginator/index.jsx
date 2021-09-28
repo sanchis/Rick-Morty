@@ -3,7 +3,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useCharactersFilter } from '../../hooks/useCharacterFilter'
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
-export default function Paginator () {
+export default function Paginator ({ onPaginate = () => {} }) {
   const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharactersFilter()
 
   return (
@@ -11,7 +11,10 @@ export default function Paginator () {
       <Button
         data-cy='filter-move-prev'
         leftIcon={<ArrowLeftIcon />}
-        onClick={movePrev}
+        onClick={() => {
+          movePrev()
+          onPaginate()
+        }}
         disabled={!canMovePrev()}
       >
         Prev
@@ -19,7 +22,10 @@ export default function Paginator () {
       <Button
         data-cy='filter-move-next'
         rightIcon={<ArrowRightIcon />}
-        onClick={moveNext}
+        onClick={() => {
+          moveNext()
+          onPaginate()
+        }}
         disabled={!canMoveNext()}
       >
         Next
