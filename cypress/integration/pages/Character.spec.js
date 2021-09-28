@@ -60,7 +60,7 @@ describe('Character page', () => {
     })
   })
 
-  it('Character page from character list get character obj', () => {
+  it('Character page from character list get character obj from context', () => {
     cy.visit('#/')
     cy.get('[data-cy="container-list"]').children().first().click()
     cy.get('[data-cy="loading-indicator"]').should('not.exist')
