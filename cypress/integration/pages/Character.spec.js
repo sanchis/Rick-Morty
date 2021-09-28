@@ -43,7 +43,6 @@ describe('Character page', () => {
   })
 
   it('Character page can navigate next', () => {
-    cy.reload()
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
     cy.get('button[data-cy="navigate-next-character"]').click()
     cy.wait(['@getCharacter']).then(intercept => {
