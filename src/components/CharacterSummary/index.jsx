@@ -13,7 +13,7 @@ export default function CharacterSummary ({
 
   function formatDate (date) {
     const dateObj = new Date(date)
-    return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}`
+    return `${dateObj.getUTCDate()}/${dateObj.getUTCMonth()}/${dateObj.getUTCFullYear()} ${dateObj.getUTCHours()}:${dateObj.getUTCMinutes()}`
   }
 
   return (

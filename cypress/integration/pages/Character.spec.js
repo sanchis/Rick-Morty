@@ -16,7 +16,7 @@ describe('Character page', () => {
       expect($p.get(1).innerText).to.eq('Location:Earth (Replacement Dimension)')
       expect($p.get(2).innerText).to.eq('Origin:Earth (C-137)')
     })
-    cy.get('[data-cy="character-content"] span').last().should('have.text', '4/10/2017 19:48')
+    cy.get('[data-cy="character-content"] span').last().should('have.text', '4/10/2017 18:48')
   })
 
   it('Character page loading indicator should be show', () => {
