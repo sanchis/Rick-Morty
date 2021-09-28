@@ -44,6 +44,8 @@ describe('Character page', () => {
 
   it('Character page can navigate next', () => {
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
+    cy.reload()
+    cy.wait(['@getCharacter'])
     cy.get('button[data-cy="navigate-next-character"]').click()
     cy.wait(['@getCharacter']).then(intercept => {
       expect(intercept.request.url).to.match(/\/character\/2/)
