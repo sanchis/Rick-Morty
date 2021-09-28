@@ -1,3 +1,5 @@
 {
-    "baseUrl": "http://localhost:3000/Rick-Morty"
+    "baseUrl": "http://localhost:3000/Rick-Morty",
+    "video": false,
+    "screenshot": false
 }

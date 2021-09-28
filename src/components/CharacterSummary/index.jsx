@@ -13,13 +13,12 @@ export default function CharacterSummary ({
 
   function formatDate (date) {
     const dateObj = new Date(date)
-    return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()} 
-      ${dateObj.getHours()}:${dateObj.getMinutes()}`
+    return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}`
   }
 
   return (
     <>
-      <Card {...rest} boxShadow='xl'>
+      <Card {...rest} boxShadow='xl' data-cy='character-content'>
         <Flex direction={flexDirection ?? ['row', 'row', 'column', 'column', 'column']}>
           <SkeletonCircle alignSelf='center' size={['100', '100', '300']} hidden={imageLoaded} />
           <Image
@@ -40,21 +39,21 @@ export default function CharacterSummary ({
               {character.status} - {character.gender} {character.species}
             </Text>
             <Text isTruncated>
-              <Text as='span' variant='hightLight'>
-                Location:{' '}
+              <Text as='span' variant='hightLight' mr='1'>
+                Location:
               </Text>
               {character.location.name}
             </Text>
             <Text isTruncated>
-              <Text as='span' variant='hightLight'>
-                Origin:{' '}
+              <Text as='span' variant='hightLight' mr='1'>
+                Origin:
               </Text>
               {character.origin.name}
             </Text>
-            <Text as='span' variant='hightLight'>
-              Created:{' '}
+            <Text as='span' variant='hightLight' mr='1'>
+              Created:
             </Text>
-            <Text as='span'> {formatDate(character.created)}</Text>
+            <Text as='span'>{formatDate(character.created)}</Text>
           </Box>
         </Flex>
       </Card>

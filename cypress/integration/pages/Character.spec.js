@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 describe('Character page', () => {
   beforeEach(() => {
     cy.visit('#/character/1')
@@ -5,6 +6,17 @@ describe('Character page', () => {
 
   it('Character page can be opened', () => {
     cy.contains('Rick Sanchez')
+  })
+
+  it('Character page can be display data of character', () => {
+    cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
+    cy.get('[data-cy="character-content"] h2').first().should('have.text', 'Rick Sanchez')
+    cy.get('[data-cy="character-content"] p').should(($p) => {
+      expect($p.get(0).innerText).to.eq('Alive - Male Human')
+      expect($p.get(1).innerText).to.eq('Location:Earth (Replacement Dimension)')
+      expect($p.get(2).innerText).to.eq('Origin:Earth (C-137)')
+    })
+    cy.get('[data-cy="character-content"] span').last().should('have.text', '4/10/2017 19:48')
   })
 
   it('Character page loading indicator should be show', () => {
@@ -30,7 +42,8 @@ describe('Character page', () => {
     cy.get('input[data-cy="filter-by-name"]').should('exist')
   })
 
-  it('Character page can navigate next', () => {
+  it.only('Character page can navigate next', () => {
+    cy.reload()
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
     cy.get('button[data-cy="navigate-next-character"]').click()
     cy.wait(['@getCharacter']).then(intercept => {
