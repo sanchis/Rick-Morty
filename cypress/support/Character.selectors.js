@@ -1,0 +1,5 @@
+export const getCharacterContent = () => cy.get('[data-cy="character-content"]')
+export const getButtonMoveNext = () => cy.get('button[data-cy="navigate-next-character"]')
+export const getButtonMovePrev = () => cy.get('button[data-cy="navigate-prev-character"]')
+export const getLoadingIndicator = () => cy.get('[data-cy="loading-indicator"]')
+export const getButtonBack = () => cy.get('button[data-cy="navigate-back-character"]')
