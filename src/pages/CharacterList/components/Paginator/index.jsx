@@ -1,11 +1,8 @@
 import React from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { useCharactersFilter } from '../../hooks/useCharacterFilter'
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
 
-export default function Paginator ({ onPaginate = () => {} }) {
-  const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharactersFilter()
-
+export default function Paginator ({ moveNext, movePrev, canMoveNext, canMovePrev, onPaginate = () => {} }) {
   return (
     <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
       <Button

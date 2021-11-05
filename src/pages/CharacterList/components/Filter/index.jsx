@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useCharactersFilter } from '../../hooks/useCharacterFilter'
-import Paginator from '../Paginator'
 import { Input } from '@chakra-ui/react'
 import Card from '@/components/Card'
 import { Flex } from '@chakra-ui/layout'
 
-export default function Filter () {
-  const { findByName, filter } = useCharactersFilter()
+export default function Filter ({ filter }) {
   const [filterValue, setFilterValue] = useState(filter)
 
   useEffect(() => {
-    findByName(filterValue)
+    filter(filterValue)
   }, [filterValue])
 
   return (
@@ -23,7 +20,6 @@ export default function Filter () {
           onChange={event => setFilterValue(event.target.value)}
           value={filterValue}
         />
-        <Paginator />
       </Flex>
     </Card>
   )

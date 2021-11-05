@@ -9,11 +9,19 @@ import { Link } from 'wouter'
 import Loading from '../../components/Loading'
 
 export default function List () {
-  const { characters, loading } = useCharacters()
+  const {
+    characters,
+    loading,
+    moveNext,
+    movePrev,
+    canMoveNext,
+    canMovePrev,
+    filter
+  } = useCharacters()
 
   return (
     <>
-      <Filter />
+      <Filter filter={filter} />
       <Loading show={loading}>
         <Grid
           data-cy='container-list'
@@ -43,10 +51,15 @@ export default function List () {
         boxShadow='xl'
         justifyContent='center'
       >
-        <Paginator onPaginate={() => window.scroll({
-          behavior: 'smooth',
-          top: 0
-        })}
+        <Paginator
+          canMoveNext={canMoveNext}
+          canMovePrev={canMovePrev}
+          moveNext={moveNext}
+          movePrev={movePrev}
+          onPaginate={() => window.scroll({
+            behavior: 'smooth',
+            top: 0
+          })}
         />
       </Card>
     </>
