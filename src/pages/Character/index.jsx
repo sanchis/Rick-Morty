@@ -16,7 +16,7 @@ export default function Character ({ id }) {
     <>
       <Navigation loading={loading} onMoveNextCharacter={moveNextCharacter} onMovePrevCharacter={movePrevCharacter} />
       <Loading show={loading}>
-        <CharacterSummary character={character} flexDirection='row' />
+        {character ? <CharacterSummary character={character} flexDirection='row' /> : null}
       </Loading>
     </>
   )

@@ -1,19 +1,36 @@
-import { useEffect, useState } from 'react'
-import { getCharacter } from '../services'
+import { useQuery, gql } from '@apollo/client'
+import { useEffect } from 'react'
 import { useLocation } from 'wouter'
 
+// TODO move external file
+const query = gql`query Character($id: ID!) {
+  character(id:$id) {
+    id
+    name
+    image
+    status
+    gender
+    species
+    location {
+      name
+    }
+    origin {
+      name
+    }
+    created
+  }
+}`
+
 export function useCharacter (id) {
-  const [loading, setLoading] = useState(true)
-  const [character, setCharacter] = useState()
+  const { loading, data, error } = useQuery(query, { variables: { id } })
   const [, setLocation] = useLocation()
 
   useEffect(() => {
-    setLoading(true)
-    getCharacter(id)
-      .then(setCharacter)
-      .catch(() => setLocation('/error/404'))
-      .finally(() => setLoading(false))
-  }, [id])
+    if (error) {
+      console.error(error)
+      setLocation('/error/404')
+    }
+  }, [error])
 
   function moveNextCharacter () {
     setLocation(`/character/${Number(id) + 1}`)
@@ -24,7 +41,7 @@ export function useCharacter (id) {
   }
 
   return {
-    character,
+    character: data?.character,
     loading,
     moveNextCharacter,
     movePrevCharacter

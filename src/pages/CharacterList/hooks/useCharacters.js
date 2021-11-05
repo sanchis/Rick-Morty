@@ -2,6 +2,7 @@ import { useQuery, gql } from '@apollo/client'
 import debounce from 'just-debounce-it'
 import { useCallback } from 'react'
 
+// TODO move to the external file
 const query = gql`query Characters($page: Int!, $name: String) {
   characters (page: $page, filter: { name: $name }){
     info {
