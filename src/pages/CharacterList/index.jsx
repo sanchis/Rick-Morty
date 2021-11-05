@@ -12,16 +12,13 @@ export default function List () {
   const {
     characters,
     loading,
-    moveNext,
-    movePrev,
-    canMoveNext,
-    canMovePrev,
-    filter
+    filter,
+    ...rest
   } = useCharacters()
 
   return (
     <>
-      <Filter filter={filter} />
+      <Filter filter={filter} {...rest} />
       <Loading show={loading}>
         <Grid
           data-cy='container-list'
@@ -52,10 +49,7 @@ export default function List () {
         justifyContent='center'
       >
         <Paginator
-          canMoveNext={canMoveNext}
-          canMovePrev={canMovePrev}
-          moveNext={moveNext}
-          movePrev={movePrev}
+          {... rest}
           onPaginate={() => window.scroll({
             behavior: 'smooth',
             top: 0
