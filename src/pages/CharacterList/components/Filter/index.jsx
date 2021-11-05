@@ -5,7 +5,7 @@ import { Flex } from '@chakra-ui/layout'
 import Paginator from '../Paginator'
 
 export default function Filter ({ filter, ...rest }) {
-  const [filterValue, setFilterValue] = useState(filter)
+  const [filterValue, setFilterValue] = useState('')
 
   useEffect(() => {
     filter(filterValue)

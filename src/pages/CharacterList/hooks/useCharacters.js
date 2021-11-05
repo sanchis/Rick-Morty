@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 import debounce from 'just-debounce-it'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 // TODO move to the external file
 const query = gql`query Characters($page: Int!, $name: String) {
@@ -28,7 +28,18 @@ const query = gql`query Characters($page: Int!, $name: String) {
 }`
 
 export function useCharacters () {
-  const { data, loading, refetch } = useQuery(query, { variables: { page: 0 } })
+  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 0 } })
+  const [characters, setCharacters] = useState([])
+
+  useEffect(() => {
+    setCharacters(data?.characters?.results ?? [])
+  }, [data])
+
+  useEffect(() => {
+    if (error) {
+      setCharacters([])
+    }
+  }, [error])
 
   function moveNext () {
     if (canMoveNext()) {
@@ -43,11 +54,11 @@ export function useCharacters () {
   }
 
   function canMoveNext () {
-    return data?.characters?.info?.next !== null
+    return !loading && data?.characters?.info?.next !== null
   }
 
   function canMovePrev () {
-    return data?.characters?.info?.prev !== null
+    return !loading && data?.characters?.info?.prev !== null
   }
 
   const filter = useCallback(
@@ -56,7 +67,7 @@ export function useCharacters () {
   )
 
   return {
-    characters: data?.characters?.results ?? [],
+    characters,
     moveNext,
     movePrev,
     canMoveNext,
