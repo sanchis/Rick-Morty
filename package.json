@@ -10,12 +10,14 @@
     "lint": "standard"
   },
   "dependencies": {
+    "@apollo/client": "3.4.16",
     "@chakra-ui/icons": "1.0.15",
     "@chakra-ui/react": "1.6.8",
     "@emotion/react": "11.4.1",
     "@emotion/styled": "11.3.0",
     "axios": "0.21.4",
     "framer-motion": "4.1.17",
+    "graphql": "15.7.2",
     "just-debounce-it": "1.5.0",
     "react": "17.0.0",
     "react-dom": "17.0.0",
