@@ -28,7 +28,7 @@ const query = gql`query Characters($page: Int!, $name: String) {
 }`
 
 export function useCharacters () {
-  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 0 } })
+  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 1 } })
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export function useCharacters () {
   }
 
   const filter = useCallback(
-    debounce(name => refetch({ name, page: 0 }), 500),
+    debounce(name => refetch({ name, page: 1 }), 500),
     []
   )
 
