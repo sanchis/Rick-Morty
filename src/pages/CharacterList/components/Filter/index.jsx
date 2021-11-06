@@ -3,12 +3,15 @@ import { Input } from '@chakra-ui/react'
 import Card from '@/components/Card'
 import { Flex } from '@chakra-ui/layout'
 import Paginator from '../Paginator'
+import { isNil } from 'lodash'
 
 export default function Filter ({ filter, ...rest }) {
-  const [filterValue, setFilterValue] = useState('')
+  const [filterValue, setFilterValue] = useState()
 
   useEffect(() => {
-    filter(filterValue)
+    if (!isNil(filterValue)) {
+      filter(filterValue)
+    }
   }, [filterValue])
 
   return (
