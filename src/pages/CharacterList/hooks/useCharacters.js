@@ -28,7 +28,7 @@ const query = gql`query Characters($page: Int!, $name: String) {
 }`
 
 export function useCharacters () {
-  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 1 } })
+  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 1 }, notifyOnNetworkStatusChange: true })
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
