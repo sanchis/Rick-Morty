@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import { getButtonBack, getButtonMoveNext, getButtonMovePrev, getCharacterContent, getLoadingIndicator } from '../../support/Character.selectors'
-import { getContainerList, getFilterInput } from '../../support/CharacterList.selectors'
+import { getFilterInput } from '../../support/CharacterList.selectors'
 
 describe('Character page', () => {
   beforeEach(() => {
@@ -59,6 +59,7 @@ describe('Character page', () => {
 
   it('Character page can navigate prev', () => {
     cy.intercept('/graphql').as('getCharacter')
+    cy.reload()
     cy.wait(['@getCharacter'])
     getButtonMovePrev().click()
     cy.wait(['@getCharacter']).then(intercept => {
