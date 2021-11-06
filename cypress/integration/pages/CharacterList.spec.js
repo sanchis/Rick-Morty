@@ -16,7 +16,7 @@ describe('Character List page', () => {
     getContainerList().children().should('have.length', 0)
   })
 
-  it.only('CharacterList page can be paginated next', () => {
+  it('CharacterList page can be paginated next', () => {
     cy.intercept('/graphql', { fixture: 'characters.json', delay: 2000 }).as('getCharacters')
     cy.reload()
     cy.wait(['@getCharacters'])
@@ -33,7 +33,7 @@ describe('Character List page', () => {
     getButtonMoveNext().first().should('be.disabled')
   })
 
-  it.only('CharacterList page can be paginated prev', () => {
+  it('CharacterList page can be paginated prev', () => {
     cy.intercept('/graphql', { fixture: 'characters-prev.json', delay: 2000 }).as('getCharacters')
     cy.reload()
     cy.wait(['@getCharacters'])
