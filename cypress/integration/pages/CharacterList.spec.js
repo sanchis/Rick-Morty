@@ -46,12 +46,12 @@ describe('Character List page', () => {
   })
 
   it('CharacterList page paginate prev buttons can be disabled', () => {
-    cy.intercept('/graphql', { fixture: 'characters.json' }).as('getCharacters')
+    cy.intercept('/graphql', { fixture: 'characters.json', delay: 2000 }).as('getCharacters')
     getButtonMovePrev().first().should('be.disabled')
   })
 
   it('CharacterList page paginate next buttons can be disabled', () => {
-    cy.intercept('/graphql', { fixture: 'charactersListLimit.json' }).as('getCharacters')
+    cy.intercept('/graphql', { fixture: 'charactersListLimit.json', delay: 2000 }).as('getCharacters')
     cy.reload()
     getButtonMoveNext().first().should('be.disabled')
   })
