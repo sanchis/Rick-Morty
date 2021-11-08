@@ -1,4 +1,4 @@
-name: ci-on-main
+name: cd-on-main
 
 on:
   pull_request:
