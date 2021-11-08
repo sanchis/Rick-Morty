@@ -7,13 +7,11 @@ import theme from './themes'
 import logo from '@/../assets/logo.png'
 import { useHashLocation } from './hooks/useHashLocation'
 import Error from './pages/Error'
-import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: import.meta.env.RM_BASE_URL
-  })
+  uri: import.meta.env.RM_BASE_URL
 })
 
 export default function App () {
