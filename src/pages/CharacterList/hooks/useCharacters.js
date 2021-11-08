@@ -1,34 +1,10 @@
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import debounce from 'just-debounce-it'
 import { useCallback, useEffect, useState } from 'react'
-
-// TODO move to the external file
-const query = gql`query Characters($page: Int!, $name: String) {
-  characters (page: $page, filter: { name: $name }){
-    info {
-      next
-      prev
-    },
-    results {
-      id
-      name
-      image
-      status
-      gender
-      species
-      location {
-        name
-      }
-      origin {
-        name
-      }
-      created
-    }
-  }
-}`
+import { GetList } from '../queries'
 
 export function useCharacters () {
-  const { data, loading, refetch, error } = useQuery(query, { variables: { page: 1 }, notifyOnNetworkStatusChange: true })
+  const { data, loading, refetch, error } = useQuery(GetList, { variables: { page: 1 }, notifyOnNetworkStatusChange: true })
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {

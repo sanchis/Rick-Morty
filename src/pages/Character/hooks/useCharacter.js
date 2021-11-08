@@ -1,28 +1,10 @@
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { useEffect } from 'react'
 import { useLocation } from 'wouter'
-
-// TODO move external file
-const query = gql`query Character($id: ID!) {
-  character(id:$id) {
-    id
-    name
-    image
-    status
-    gender
-    species
-    location {
-      name
-    }
-    origin {
-      name
-    }
-    created
-  }
-}`
+import { GetCharacter } from '../queries'
 
 export function useCharacter (id) {
-  const { loading, data, error } = useQuery(query, { variables: { id } })
+  const { loading, data, error } = useQuery(GetCharacter, { variables: { id } })
   const [, setLocation] = useLocation()
 
   useEffect(() => {
