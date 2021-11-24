@@ -14,10 +14,10 @@ describe('Character page', () => {
 
   it('Character page can be display data of character', () => {
     cy.intercept('api/character/*', { fixture: 'character.json' }).as('getCharacter')
-    getCharacterContent().get('h2').first().should('have.text', 'Rick Sanchez')
+    getCharacterContent().get('h4').first().should('have.text', 'Rick Sanchez')
     getCharacterContent().get('p').should(($p) => {
       expect($p.get(0).innerText).to.eq('Alive - Male Human')
-      expect($p.get(1).innerText).to.eq('Location:Earth (Replacement Dimension)')
+      expect($p.get(1).innerText).to.eq('Location:Citadel of Ricks')
       expect($p.get(2).innerText).to.eq('Origin:Earth (C-137)')
     })
     getCharacterContent().get('span').last().should('have.text', '4/10/2017 18:48')

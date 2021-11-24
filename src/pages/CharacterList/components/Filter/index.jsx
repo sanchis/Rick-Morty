@@ -1,9 +1,9 @@
+import { TextField } from '@mui/material'
+import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
+import Card from '../../../../components/Card'
 import { useCharactersFilter } from '../../hooks/useCharacterFilter'
 import Paginator from '../Paginator'
-import { Input } from '@chakra-ui/react'
-import Card from '@/components/Card'
-import { Flex } from '@chakra-ui/layout'
 
 export default function Filter () {
   const { findByName, filter } = useCharactersFilter()
@@ -14,17 +14,18 @@ export default function Filter () {
   }, [filterValue])
 
   return (
-    <Card boxShadow='xl' my='2' p='2'>
-      <Flex direction='row'>
-        <Input
+    <Card my={1} padding={1}>
+      <Box flexDirection='row' display='flex'>
+        <TextField
           placeholder='Search by name'
           data-cy='filter-by-name'
+          fullWidth
           type='text'
           onChange={event => setFilterValue(event.target.value)}
           value={filterValue}
         />
         <Paginator />
-      </Flex>
+      </Box>
     </Card>
   )
 }

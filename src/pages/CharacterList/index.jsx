@@ -1,12 +1,12 @@
+import { Grid } from '@mui/material'
 import React from 'react'
-import { useCharacters } from './hooks/useCharacters'
-import Filter from './components/Filter'
-import CharacterSummary from '@/components/CharacterSummary'
-import Paginator from './components/Paginator'
-import { Grid } from '@chakra-ui/layout'
-import Card from '@/components/Card'
 import { Link } from 'wouter'
+import Card from '../../components/Card'
+import CharacterSummary from '../../components/CharacterSummary'
 import Loading from '../../components/Loading'
+import Filter from './components/Filter'
+import Paginator from './components/Paginator'
+import { useCharacters } from './hooks/useCharacters'
 
 export default function List () {
   const { characters, loading } = useCharacters()
@@ -16,31 +16,30 @@ export default function List () {
       <Filter />
       <Loading show={loading}>
         <Grid
+          container
+          display='grid'
           data-cy='container-list'
-          templateColumns='repeat(auto-fill, minmax(346px, 1fr))'
-          gap={6}
+          direction='row'
+          gridTemplateColumns='repeat(auto-fill, minmax(346px, 1fr))'
+          gap={3}
           alignItems='center'
         >
           {characters.map(character => (
             <Link href={`/character/${character.id}`} key={character.id}>
-              <CharacterSummary
-                character={character}
-                cursor='pointer'
-                _hover={{
-                  transform: 'scale(1.1)'
-                }}
-                transition='0.1s ease-in-out'
-              />
+              <Grid item>
+                <CharacterSummary
+                  character={character}
+                />
+              </Grid>
             </Link>
           ))}
         </Grid>
       </Loading>
       <Card
         w='100%'
-        p='2'
-        my='2'
+        p={2}
+        my={2}
         display='flex'
-        boxShadow='xl'
         justifyContent='center'
       >
         <Paginator onPaginate={() => window.scroll({

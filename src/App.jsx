@@ -3,19 +3,29 @@ import { Route, Router, Switch } from 'wouter'
 import { CharactersContextProvider } from './context/CharactersContext'
 import Character from './pages/Character'
 import CharacterList from './pages/CharacterList'
-import { ChakraProvider, Container, Image } from '@chakra-ui/react'
-import theme from './themes'
 import logo from '@/../assets/logo.png'
 import { useHashLocation } from './hooks/useHashLocation'
 import Error from './pages/Error'
+import { Container, CssBaseline } from '@mui/material'
+
+import { ThemeContextProvider } from './context/ThemeContext'
 
 export default function App () {
   return (
-    <ChakraProvider theme={theme}>
+    <ThemeContextProvider>
+      <CssBaseline />
       <CharactersContextProvider>
-        <Container maxW='container.xl'>
+        <Container maxWidth='xl'>
           <header>
-            <Image margin='auto' src={logo} />
+            <img
+              style={{
+                margin: 'auto',
+                display: 'block',
+                width: '100%',
+                height: 'auto',
+                maxWidth: '300px'
+              }} src={logo}
+            />
           </header>
           <Router base='/Rick-Morty' hook={useHashLocation}>
             <Switch>
@@ -33,6 +43,6 @@ export default function App () {
           </Router>
         </Container>
       </CharactersContextProvider>
-    </ChakraProvider>
+    </ThemeContextProvider>
   )
 }
