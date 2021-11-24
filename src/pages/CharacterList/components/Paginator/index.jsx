@@ -1,27 +1,27 @@
+import { Button, ButtonGroup } from '@mui/material'
 import React from 'react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useCharactersFilter } from '../../hooks/useCharacterFilter'
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
+import { NavigateBefore, NavigateNext } from '@mui/icons-material'
 
 export default function Paginator ({ onPaginate = () => {} }) {
   const { moveNext, movePrev, canMoveNext, canMovePrev } = useCharactersFilter()
 
   return (
-    <ButtonGroup colorScheme='primary' spacing='1' mx='1'>
+    <ButtonGroup sx={{ ml: 1 }} variant='contained'>
       <Button
         data-cy='filter-move-prev'
-        leftIcon={<ArrowLeftIcon />}
         onClick={() => {
           movePrev()
           onPaginate()
         }}
+        startIcon={<NavigateBefore />}
         disabled={!canMovePrev()}
       >
         Prev
       </Button>
       <Button
         data-cy='filter-move-next'
-        rightIcon={<ArrowRightIcon />}
+        endIcon={<NavigateNext />}
         onClick={() => {
           moveNext()
           onPaginate()

@@ -1,5 +1,6 @@
-import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons'
-import { Button, Flex } from '@chakra-ui/react'
+import { NavigateBefore, NavigateNext } from '@mui/icons-material'
+import { Button } from '@mui/material'
+import { Box } from '@mui/system'
 import React from 'react'
 import { useLocation } from 'wouter'
 import Card from '../../../../components/Card'
@@ -8,37 +9,56 @@ export default function Navigation ({ loading, onMovePrevCharacter, onMoveNextCh
   const [, setLocation] = useLocation()
 
   return (
-    <Card my='2' p='2'>
-      <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
+    <Card my={2} p={2}>
+      <Box
+        display='flex' justifyContent='space-between' sx={{
+          flexDirection: {
+            xs: 'column',
+            sm: 'column',
+            md: 'row',
+            lg: 'row'
+          }
+        }}
+        gap={1}
+      >
         <Button
-          data-cy='navigate-back-character' leftIcon={<ArrowBackIcon />} my={['1', '1', '0']}
+          variant='contained'
+          data-cy='navigate-back-character' startIcon={<NavigateBefore />}
           onClick={() => setLocation('/')}
         >
           Back to the list
         </Button>
-        <Flex justifyContent='space-between' direction={['column', 'column', 'row', 'row']}>
+        <Box
+          display='flex' justifyContent='space-between' sx={{
+            flexDirection: {
+              xs: 'column',
+              sm: 'column',
+              md: 'row',
+              lg: 'row'
+            }
+          }}
+          gap={1}
+        >
           <Button
+            variant='contained'
             data-cy='navigate-prev-character'
             onClick={onMovePrevCharacter}
             disabled={loading}
-            leftIcon={<ArrowLeftIcon />}
-            my={['1', '1', '0']}
-            mx='1'
+            startIcon={<NavigateBefore />}
           >
             Move prev character
           </Button>
           <Button
+            variant='contained'
             data-cy='navigate-next-character'
             onClick={onMoveNextCharacter}
             disabled={loading}
-            rightIcon={<ArrowRightIcon />}
-            my={['1', '1', '0']}
-            mx='1'
+            endIcon={<NavigateNext />}
           >
             Move next character
           </Button>
-        </Flex>
-      </Flex>
+        </Box>
+      </Box>
     </Card>
   )
 }

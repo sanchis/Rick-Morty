@@ -1,4 +1,4 @@
-import { Heading, Image } from '@chakra-ui/react'
+import { Typography } from '@mui/material'
 import React from 'react'
 import Card from '../../components/Card'
 import errorImage from '@/../assets/error.gif'
@@ -6,18 +6,25 @@ import errorImage from '@/../assets/error.gif'
 export default function Error ({ code, message }) {
   return (
     <>
-      <Card p='5'>
-        <Heading
+      <Card p={5}>
+        <Typography
           textAlign='center'
           fontWeight='light'
-          as='h1'
-          size='4xl'
+          variant='h2'
           fontStyle='italic'
         >
           {code}
-        </Heading>
+        </Typography>
 
-        <Image my='5' borderRadius='2xl' mx='auto' src={errorImage} alt={code} />
+        <img
+          my={5} style={{
+            width: '100%',
+            maxWidth: '300px',
+            margin: 'auto',
+            textAlign: 'center',
+            display: 'block'
+          }} mx='auto' src={errorImage} alt={code}
+        />
       </Card>
     </>
   )

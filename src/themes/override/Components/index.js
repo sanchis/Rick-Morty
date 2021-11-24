@@ -1,13 +1,5 @@
-import Input from './Input'
-import Card from './Card'
-import Button from './Button'
-import Tooltip from './Tooltip'
-import Text from './Text'
+import MuiTypography from './MuiTypography'
 
 export default {
-  Input,
-  Card,
-  Button,
-  Tooltip,
-  Text
+  MuiTypography
 }

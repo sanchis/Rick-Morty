@@ -1,7 +1,6 @@
-import { Image } from '@chakra-ui/image'
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout'
+import { Skeleton, Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import React, { useState } from 'react'
-import { SkeletonCircle } from '@chakra-ui/react'
 import Card from './../Card'
 
 export default function CharacterSummary ({
@@ -17,46 +16,71 @@ export default function CharacterSummary ({
   }
 
   return (
-    <>
-      <Card {...rest} boxShadow='xl' data-cy='character-content'>
-        <Flex direction={flexDirection ?? ['row', 'row', 'column', 'column', 'column']}>
-          <SkeletonCircle alignSelf='center' size={['100', '100', '300']} hidden={imageLoaded} />
-          <Image
-            src={character.image}
-            maxW={['30%', '30%', '100%']}
-            maxH='300px'
-            objectFit='cover'
-            objectPosition='top'
-            alt={character.name}
-            hidden={!imageLoaded}
-            onLoad={() => setImageLoaded(true)}
-          />
-          <Box p='2' overflow='hidden'>
-            <Heading as='h2' size='lg' isTruncated>
-              {character.name}
-            </Heading>
-            <Text variant='subTitle' isTruncated>
-              {character.status} - {character.gender} {character.species}
-            </Text>
-            <Text isTruncated>
-              <Text as='span' variant='hightLight' mr='1'>
-                Location:
-              </Text>
-              {character.location.name}
-            </Text>
-            <Text isTruncated>
-              <Text as='span' variant='hightLight' mr='1'>
-                Origin:
-              </Text>
-              {character.origin.name}
-            </Text>
-            <Text as='span' variant='hightLight' mr='1'>
-              Created:
-            </Text>
-            <Text as='span'>{formatDate(character.created)}</Text>
-          </Box>
-        </Flex>
-      </Card>
-    </>
+    <Card {...rest} data-cy='character-content'>
+      <Box sx={{
+        display: 'flex',
+        flexDirection: flexDirection ?? {
+          xs: 'row',
+          sm: 'row',
+          md: 'column',
+          lg: 'column',
+          xl: 'column'
+        }
+      }}
+      >
+        <>
+          {imageLoaded ??
+            <Skeleton
+              variant='circular' sx={{
+                width: {
+                  sm: 100,
+                  md: 300
+                },
+                height: {
+                  sm: 100,
+                  md: 300
+                }
+              }} hidden={imageLoaded}
+            />}
+        </>
+
+        <img
+          sx={{
+            maxWidth: {
+              xs: '30%',
+              sm: '30%',
+              md: '100%',
+              lg: '100%'
+            },
+            maxHeight: '300px'
+          }}
+          hidden={!imageLoaded} src={character.image} onLoad={() => setImageLoaded(true)} alt={character.name}
+        />
+        <Box p={1} overflow='hidden' textOverflow='ellipsis'>
+          <Typography variant='h4' noWrap>
+            {character.name}
+          </Typography>
+          <Typography component='p' color='grey.500'>
+            {character.status} - {character.gender} {character.species}
+          </Typography>
+          <Typography component='p'>
+            <Typography variant='highlight'>
+              Location:
+            </Typography>
+            {character.location.name}
+          </Typography>
+          <Typography component='p'>
+            <Typography variant='highlight'>
+              Origin:
+            </Typography>
+            {character.origin.name}
+          </Typography>
+          <Typography variant='highlight'>
+            Created:
+          </Typography>
+          <Typography component='span'>{formatDate(character.created)}</Typography>
+        </Box>
+      </Box>
+    </Card>
   )
 }
